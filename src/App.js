@@ -6,20 +6,9 @@ import Buttons from "./components/Buttons";
 
 function App() {
   const [allData, setAllData] = useState([]);
-  const [scienceData, setScienceData] = useState([]);
-  console.log(scienceData)
 
   useEffect(() => {
-    fetch("https://inshorts.deta.dev/news?category=all")
-      .then((response) => response.json())
-      .then((data) => {
-        // console.log(data.data[1].title);
-        // const all = { ...data.data };
-        setAllData(data.data);
-      })
-      .catch((err) => console.log(err));
-
-    fetchScience()
+    fetchAll() //showing all data when app is rendered
   }, []);
 
   // buttons array
@@ -30,29 +19,44 @@ function App() {
     "World",
     "Politics",
     "Automobile",
-    "All",
+    "All"
   ];
 
-  function fetchScience() {
-    fetch("https://inshorts.deta.dev/news?category=science")
-      .then(response => response.json())
-      .then(sData => {
-        // console.log(sData.data)
-        setScienceData(sData.data)
-      })
-      .catch(err => console.log(err))
+  //fetching all data function
+  const fetchAll = async () => {
+    await fetch("https://inshorts.deta.dev/news?category=all")
+    .then((response) => response.json())
+    .then((data) => {
+      setAllData(data.data);
+    })
+    .catch((err) => console.log(err));
   }
+
+  //on button click, fetch respective data
+  async function handleClick(btn) {
+    console.log(btn)
+    await fetch(`https://inshorts.deta.dev/news?category=${btn.toLowerCase()}`)
+    .then((response) => response.json())
+    .then((data) => {
+      setAllData(data.data);
+      console.log(data.data);
+    })
+    .catch((err) => console.log(err));
+
+    console.log("handling click"); 
+  }
+
 
   return (
     <div className="appContainer">
       <div className="button-container">
         {buttonText.map((btn, ind) => {
-          return <Buttons key={ind} text={btn} />;
+          return <Buttons key={ind} text={btn} clicked={() => handleClick(btn)} />;
         })}
       </div>
       <div className="content-container">
         {
-          allData && allData.map((el, ind) => {
+          allData.map((el, ind) => {
             return <Card title={el.title} key={ind} image={el.imageUrl} />
           })
         }
