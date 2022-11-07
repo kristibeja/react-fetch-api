@@ -12,6 +12,12 @@
     margin-top: 40px;
 }
 
+.button:hover {
+    cursor: pointer;
+    background-color: #51D5FF;
+    color: #fff;
+}
+
 .card-container {
     width: 100%;
     max-width: 489px;
