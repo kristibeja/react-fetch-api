@@ -13,6 +13,12 @@
     cursor: pointer;
 }
 
+.button:hover {
+    cursor: pointer;
+    background-color: #51D5FF;
+    color: #fff;
+}
+
 .card-container {
     width: 100%;
     max-width: 489px;
@@ -33,4 +39,35 @@
     color: #000;
     background: #fff;
     padding: 10px 40px 10px 15px;
+}
+
+.page-container {
+    background-color: #fff;
+    padding: 45px 100px;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+.page-container img {
+    width: 1000px;
+    height: 582px;
+    align-self: center;
+}
+
+.head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+    margin-bottom: 35px;
+}
+
+.head i {
+    align-self: flex-start;
+    justify-self: start;
+}
+
+.head div {
+    font-weight: 700;
+    font-size: 20px;
 }

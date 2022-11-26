@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import Card from "./components/Card";
-
-import "./App.css";
 import Buttons from "./components/Buttons";
+import Page from "./components/Page";
+import "./App.css";
+
 
 function App() {
   const [allData, setAllData] = useState([]);
