@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Card from "./components/Card";
 import Buttons from "./components/Buttons";
-import Page from "./components/Page";
+// import Page from "./components/Page";
 import "./App.css";
 
 
